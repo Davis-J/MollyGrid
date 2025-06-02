@@ -46,14 +46,37 @@ box {
     border-color: black;
 }
 
+.movieBox:hover {
+    background-color: darkblue;
+}
+
 .criteria {
     /* Have to use clamp here */
-    font-size: 1vw;
+    font-size: clamp(0.5rem, 1vw, 1.2rem);
     background-color: blue;
     color: aqua;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+@media (max-width: 1100px) {
+    .criteria {
+        font-size: clamp(0.5rem, 2vw, 1rem)
+    }
+
+    #grid {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .criteria {
+        font-size: clamp(0.5rem, 2vw, 1rem)
+    }
+    #grid {
+        width: 60vw;
+    }
 }
 
 /* .criteriaColumn {
