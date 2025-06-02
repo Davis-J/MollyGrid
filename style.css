@@ -8,7 +8,8 @@
 h1 {
     color : black;
 }
-#exampleImg {
+
+#item1 {
     display: block;
     height: 100%;
     width: 100%;
@@ -19,18 +20,23 @@ h1 {
 }
 #grid {
     display: grid;
-    margin: 100px 0px 100px 0px;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    width: 27vw;
+    margin: 100px 30px 100px 0px;
+    /* margin: 5vh 0vw 5vh 3vw; Have to use clamp here */
+    grid-template-rows: 1fr repeat(3, 4fr);
+    grid-template-columns: 1fr repeat(3, 1fr);
+    width: 30vw;
     justify-content: space-between;
     border: 0px solid black;
     grid-gap: 2px;
     border-color: black;
     aspect-ratio: 3 / 4.5;
 }
-.box {
+
+box {
     display: flex;
+}
+
+.movieBox {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -38,4 +44,22 @@ h1 {
     background-color: blue;
     border: 0px solid black;
     border-color: black;
+}
+
+.criteria {
+    /* Have to use clamp here */
+    font-size: 1vw;
+    background-color: blue;
+    color: aqua;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* .criteriaColumn {
+    
+} */
+
+.criteriaRow {
+    padding: 2px;
 }
