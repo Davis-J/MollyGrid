@@ -86,3 +86,53 @@ box {
 .criteriaRow {
     padding: 2px;
 }
+
+/* modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.4);
+}
+
+.modalContent {
+    background: #fefefe;
+    margin:auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;   
+}
+
+.closeBtnContainer {
+    display: flex;
+    justify-content: end;
+}
+
+.closeBtn {
+    color: #aaaaaa;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.closeBtn:hover, .closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* media queries for modals */
+@media (max-width: 768px) {
+    .modalContent {
+        width: 90%;
+        padding: 10px;
+    }
+    .closeBtn {
+        font-size: 25px;
+    }
+}
+

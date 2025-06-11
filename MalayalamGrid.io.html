@@ -17,30 +17,56 @@
 			
 			<!-- First row -->
 			<box id="emptybox"></box>
-			<box class="criteria criteriaColumn">Released between 2020-2025</box>
-			<box class="criteria criteriaColumn">Has a double letter</box>
-			<box class="criteria criteriaColumn">Sadge movie Idk</box>
+			<box class="criteria criteriaColumn" id="column1">Released between 2020-2025</box>
+			<box class="criteria criteriaColumn" id="column2">Has a double letter</box>
+			<box class="criteria criteriaColumn" id="column3">Sadge movie Idk</box>
 			
 			<!-- Second Row  -->
-			<box class="criteria criteriaRow">Mohanlal</box>
+			<box class="criteria criteriaRow" id="row1">Mohanlal</box>
 			<box class="movieBox"><img id="item1" src="/example image.jpg"></box>
 			<box class="movieBox">Item 2</box>
 			<box class="movieBox">Item 3</box>
 
 			<!-- Third Row  -->
-			<box class="criteria criteriaRow">Suraj Venjaramood</box>
+			<box class="criteria criteriaRow" id="row2">Suraj Venjaramood</box>
 			<box class="movieBox">Item 4</box>
 			<box class="movieBox">Item 5</box>
 			<box class="movieBox">Item 6</box>
 
 			<!-- Fourth Row  -->
-			<box class="criteria criteriaRow">Prithviraj Sukumaran</box>
+			<box class="criteria criteriaRow" id="row3">Prithviraj Sukumaran</box>
 			<box class="movieBox">Item 7</box>
 			<box class="movieBox">Item 8</box>
 			<box class="movieBox">Item 9</box>
 
 		</div>
 	</div>
+
+	<!-- modals -->
+	 <div class="modal" id="movieGuessModal"> <!--  Represents big transparents background -->
+		<div class="modalContent"> <!-- Represents the actual content -->
+			<div class="closeBtnContainer" id="movieGuessCloseContainer">
+				<span class="closeBtn" id="movieGuessCloseBtn">&times;</span>
+			</div>
+			<form id="movieGuessForm">
+				<label for="movieGuess">
+				<!-- Making the drop down list -->
+				<div class="dropdown">
+					<button id="dropBtn">
+						<div id="movieDropdown">
+							<input type="text" class="filterMovie" placeholder="Type a movie..." onkeyup="filterFunction()">
+							<ul id="movieList">
+								<li>Apple</li>
+								<li>Banana</li>
+								<li>Cherry</li>
+							</ul>
+						</div>
+					</button>
+				</div>
+				</label>
+			</form>
+		</div>
+	 </div>
 	<script src="script.js"></script>
 </body>
 </html>
