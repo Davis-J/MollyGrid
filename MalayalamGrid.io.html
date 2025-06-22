@@ -19,7 +19,7 @@
 			<box id="emptybox"></box>
 			<box class="criteria criteriaColumn" id="column1">Released between 2020-2025</box>
 			<box class="criteria criteriaColumn" id="column2">Has a double letter</box>
-			<box class="criteria criteriaColumn" id="column3">Sadge movie Idk</box>
+			<box class="criteria criteriaColumn" id="column3">Two Word Title</box>
 			
 			<!-- Second Row  -->
 			<box class="criteria criteriaRow" id="row1">Mohanlal</box>
@@ -48,22 +48,19 @@
 			<div class="closeBtnContainer" id="movieGuessCloseContainer">
 				<span class="closeBtn" id="movieGuessCloseBtn">&times;</span>
 			</div>
+			<div id="movieCriteriaDiv">
+				<p id="movieCriteria">Placeholder</p> <!-- Needs to change based on which tile is pressed -->
+			</div>
 			<form id="movieGuessForm">
-				<label for="movieGuess">
 				<!-- Making the drop down list -->
 				<div class="dropdown">
-					<button id="dropBtn">
-						<div id="movieDropdown">
-							<input type="text" class="filterMovie" placeholder="Type a movie..." onkeyup="filterFunction()">
-							<ul id="movieList">
-								<li>Apple</li>
-								<li>Banana</li>
-								<li>Cherry</li>
-							</ul>
-						</div>
-					</button>
+					<input type="text" class="filterMovie" placeholder="Type a movie..." onkeyup="filterFunction()">
+					<ul id="movieList">
+						<li>Apple</li>
+						<li>Banana</li>
+						<li>Cherry</li>
+					</ul>
 				</div>
-				</label>
 			</form>
 		</div>
 	 </div>
