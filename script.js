@@ -1,7 +1,9 @@
 // Selecting Elements
+let activeBox = null; // this stores which box was clicked
 const movieGuessModal = document.querySelector('#movieGuessModal');
 const movieGuessCloseBtn = document.querySelector('#movieGuessCloseBtn');
 const movieBoxes = document.querySelectorAll('.movieBox');
+const movieInput = document.querySelector('#movieInput')
 const columnCriteria = [
   document.getElementById('column1'),
   document.getElementById('column2'),
@@ -27,10 +29,44 @@ movieBoxes.forEach((box, index) => {
 
     // Show the modal
     movieGuessModal.style.display = 'block';
+    //Active box to be saved
+    activeBox = box;
+    activeBox.textContent = "Hello";
+    movieInput.value = '';
+    movieInput.focus();
     // Display the criteria details via temperal literal
     document.getElementById('movieCriteria').textContent = `${rowText} X ${columnText}`;
   })
 })
+
+movieInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && activeBox) {
+    //Temporary version of entering information in movieBox
+    activeBox.textContent = movieInput.value;
+    movieGuessModal.style.display = 'none';
+    activeBox = null;
+  }
+})
+
+
+function filterFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('movieInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("movieList");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].textContent || li[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
 
 movieGuessCloseBtn.addEventListener('click', () => {
   movieGuessModal.style.display = 'none';

@@ -51,17 +51,17 @@
 			<div id="movieCriteriaDiv">
 				<p id="movieCriteria">Placeholder</p> <!-- Needs to change based on which tile is pressed -->
 			</div>
-			<form id="movieGuessForm">
+			<div id="movieGuessForm">
 				<!-- Making the drop down list -->
 				<div class="dropdown">
-					<input type="text" class="filterMovie" placeholder="Type a movie..." onkeyup="filterFunction()">
+					<input type="text" id="movieInput" placeholder="Type a movie..." onkeyup="filterFunction()">
 					<ul id="movieList">
 						<li>Apple</li>
 						<li>Banana</li>
 						<li>Cherry</li>
 					</ul>
 				</div>
-			</form>
+			</div>
 		</div>
 	 </div>
 	<script src="script.js"></script>

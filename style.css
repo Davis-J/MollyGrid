@@ -44,6 +44,7 @@ box {
     background-color: blue;
     border: 0px solid black;
     border-color: black;
+    color: red;
 }
 
 .movieBox:hover {

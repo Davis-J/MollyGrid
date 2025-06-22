@@ -401,3 +401,4 @@ FodyWeavers.xsd
 *.sln.iml
 To Do List.txt
 example image.jpg
+.vscode/launch.json
