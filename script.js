@@ -1,9 +1,13 @@
-// Selecting Elements
+// Global variables
 let activeBox = null; // this stores which box was clicked
+
+// Selecting Elements
 const movieGuessModal = document.querySelector('#movieGuessModal');
 const movieGuessCloseBtn = document.querySelector('#movieGuessCloseBtn');
 const movieBoxes = document.querySelectorAll('.movieBox');
 const movieInput = document.querySelector('#movieInput')
+const movieList = document.querySelector('#movieList');
+const movieListItems = document.querySelectorAll('.movieListItem')
 const columnCriteria = [
   document.getElementById('column1'),
   document.getElementById('column2'),
@@ -29,6 +33,7 @@ movieBoxes.forEach((box, index) => {
 
     // Show the modal
     movieGuessModal.style.display = 'block';
+    resetMovieListItems()
     //Active box to be saved
     activeBox = box;
     activeBox.textContent = "Hello";
@@ -39,23 +44,21 @@ movieBoxes.forEach((box, index) => {
   })
 })
 
-movieInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && activeBox) {
-    //Temporary version of entering information in movieBox
-    activeBox.textContent = movieInput.value;
+movieListItems.forEach(movieListItem => {
+  movieListItem.addEventListener('click', () => {
+    activeBox.textContent = movieListItem.textContent;
     movieGuessModal.style.display = 'none';
     activeBox = null;
-  }
+  })
 })
 
 
 function filterFunction() {
   // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
+  var input, filter, ul, li, i, txtValue;
   input = document.getElementById('movieInput');
   filter = input.value.toUpperCase();
-  ul = document.getElementById("movieList");
-  li = ul.getElementsByTagName('li');
+  li = movieList.getElementsByTagName('li');
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
@@ -75,5 +78,12 @@ movieGuessCloseBtn.addEventListener('click', () => {
 window.onclick = function(event) {
   if ((event.target) === movieGuessModal) {
     movieGuessModal.style.display = 'none';
+  }
+}
+
+function resetMovieListItems() {
+  var li = movieList.getElementsByTagName('li')
+  for (i = 0; i < li.length; i++) {
+    li[i].style.display = "";
   }
 }
