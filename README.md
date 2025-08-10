@@ -1,2 +1,2 @@
-# MalayalamMovieGrid
-Project that imitates the movie grid daily trivia game except it primarily focuses on Mollywood
+# MollyGrid
+Project that's a daily movie trivia game that primarily focuses Mollywood. Inspired by MovieGrid.io
