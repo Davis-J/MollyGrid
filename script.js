@@ -106,7 +106,10 @@ function resetMovieListItems() {
 
 //await means wait until asynchronous action is complete and then move on
 
-async function getMovieList(query) {
+async function getMovieList() {
+  var input, query
+  input = document.getElementById('movieInput');
+  query = input.value.toUpperCase();
   const getMovieListAPI = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
   try {
     const response = await fetch (getMovieListAPI, options);
@@ -127,15 +130,18 @@ async function getMovieList(query) {
         break;
       }
     }
+    const movieListItems = document.querySelectorAll('.movieListItem');
+    movieListItems.forEach(movieListItem => {
+      movieListItem.addEventListener('click', (e) => {
+        activeBox.textContent = e.target.textContent;
+        movieGuessModal.style.display = 'none';
+        activeBox = null;
+      })
+    })
     console.log(movieSearchList);
     
   }
   catch(error) {
     console.error(error);
   } 
-  // RANDOM CODE THOUGHTS
-  // take input from the search bar
-  // use the above api function to get a maximum of 15 movies with that title
-  // take the relevant information from what is returned
-  // Use the relevant information to display on the drop down list
 }
