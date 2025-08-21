@@ -1,5 +1,5 @@
 // Global variables
-let activeBox = null; // this stores which box was clicked
+var activeBox = null; // this stores which box was clicked
 
 // API constants
 const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjE1MTgwNDU1NTVmOTA4OTBiODQ2NTkyY2M4OGRmNyIsIm5iZiI6MTc1MDg4ODUwMS42NjksInN1YiI6IjY4NWM3MDM1MWMxZTQ2NDdhMDE1NTRhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gqLGCXdcaAQF-YIwj9Lfcll8ASr6Y6dmjpK-9tEG3EA";
@@ -46,9 +46,10 @@ movieBoxes.forEach((box, index) => {
 
     // Show the modal
     movieGuessModal.style.display = 'block';
-    resetMovieListItems()
+    ResetMovieListItems()
     //Active box to be saved
     activeBox = box;
+    console.log(activeBox);
     activeBox.textContent = "Hello";
     movieInput.value = '';
     movieInput.focus();
@@ -57,33 +58,25 @@ movieBoxes.forEach((box, index) => {
   })
 })
 
-movieListItems.forEach(movieListItem => {
-  movieListItem.addEventListener('click', () => {
-    activeBox.textContent = movieListItem.textContent;
-    movieGuessModal.style.display = 'none';
-    activeBox = null;
-  })
-})
+// Filter Function is no longer necessary
+// function filterFunction() {
+//   // Declare variables
+//   var input, filter, ul, li, i, txtValue;
+//   input = document.getElementById('movieInput');
+//   filter = input.value.toUpperCase();
+//   getMovieList(filter);
+//   li = movieList.getElementsByTagName('li');
 
-
-function filterFunction() {
-  // Declare variables
-  var input, filter, ul, li, i, txtValue;
-  input = document.getElementById('movieInput');
-  filter = input.value.toUpperCase();
-  getMovieList(filter);
-  li = movieList.getElementsByTagName('li');
-
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    txtValue = li[i].textContent || li[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
+//   // Loop through all list items, and hide those who don't match the search query
+//   for (i = 0; i < li.length; i++) {
+//     txtValue = li[i].textContent || li[i].innerText;
+//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//       li[i].style.display = "";
+//     } else {
+//       li[i].style.display = "none";
+//     }
+//   }
+// }
 
 movieGuessCloseBtn.addEventListener('click', () => {
   movieGuessModal.style.display = 'none';
@@ -95,18 +88,27 @@ window.onclick = function(event) {
   }
 }
 
-function resetMovieListItems() {
+function ResetMovieListItems() {
   var li = movieList.getElementsByTagName('li')
   for (i = 0; i < li.length; i++) {
     li[i].style.display = "";
   }
 }
 
+function IndexOf(e) {
+  let el = e.target;
+        let i=0;
+        while(el.previousElementSibling ) {
+          el=el.previousElementSibling;
+          i++;
+        }
+  return i
+}
 //API CALLS ETC
 
 //await means wait until asynchronous action is complete and then move on
 
-async function getMovieList() {
+async function GetMovieList() {
   var input, query
   input = document.getElementById('movieInput');
   query = input.value.toUpperCase();
@@ -117,15 +119,14 @@ async function getMovieList() {
     if (!response.ok) {
       console.log ("This query couldn't be resolved");
     }
-    console.log(response);
     data = await response.json();
-    
+    console.log(data);
     console.log(data.results.length);
-    let movieSearchList = []
+    let movieImageList = []
     movieList.innerHTML = ""
     for (i = 0; i<data.results.length; i++) {
       movieList.innerHTML += `<li class="movieListItem">${data.results[i].title}</li>`
-      movieSearchList.push(data.results[i].title);
+      movieImageList.push(data.results[i].poster_path);
       if (i == movieSearchListLength - 1) {
         break;
       }
@@ -133,15 +134,21 @@ async function getMovieList() {
     const movieListItems = document.querySelectorAll('.movieListItem');
     movieListItems.forEach(movieListItem => {
       movieListItem.addEventListener('click', (e) => {
+        // const image = activeBox.querySelector("img");
+        // image.src = "[The data.results.imagesource]"
+        let i = IndexOf(e);
+        console.log(i);
         activeBox.textContent = e.target.textContent;
+        activeBox.innerHTML = `<img src='https://media.themoviedb.org/t/p/w600_and_h900_bestv2/${movieImageList[i]}' />` 
+        console.log(activeBox);
         movieGuessModal.style.display = 'none';
         activeBox = null;
       })
     })
-    console.log(movieSearchList);
+    console.log(movieImageList);
     
   }
   catch(error) {
     console.error(error);
-  } 
+  }
 }

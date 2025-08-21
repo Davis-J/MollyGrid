@@ -9,7 +9,7 @@ h1 {
     color : black;
 }
 
-#item1 {
+.movieBox img {
     display: block;
     height: 100%;
     width: 100%;
