@@ -1,6 +1,8 @@
 # MollyGrid
 Project that's a daily movie trivia game that primarily focuses Mollywood. Inspired by MovieGrid.io
 
+To play the current version: https://davis-j.github.io/MollyGrid/MollyGrid.html
+
 The objective of the game is to guess movies on each of the tiles of the 3x3 grid. Each guess should follow the corresponding criteria of the tile's row and column.
 If your guess follows the listed criteria, you earn a point.
 If your guess is incorrect, you will lose one of your limited chances to guess movies on the tiles.
